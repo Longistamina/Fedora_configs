@@ -1,0 +1,106 @@
+#-----------------------------#
+#---- open Apps menu ---------#
+#-----------------------------#
+
+Super + A
+
+(or Window + A)
+
+
+#------------------------------------#
+#------- set terminal shortcut ------#
+#------------------------------------#
+
+Go to Settings -> Keyboard -> View and Customize Shortcuts -> Custom Shortcuts
+
+Then click "+" or something to add new shortcut
+
+Set below information:
+	Name: terminal-shortcut
+	Command: ptyxis --new-window (or gnome-terminal for older fedora version)
+	Shortcut: Ctrl + Alt + T
+
+=> click "Add"
+
+
+#---------------------------------------------#
+#------- set windows switching shortcut ------#
+#---------------------------------------------#
+
+Settings => Keyboard => View and customize shortcuts => Navigation => Switch windows => set "Alt + Tab"
+
+
+#--------------------------------------------#
+#----- Dash to Dock (the left-size dock) ----#
+#--------------------------------------------#
+
+#### THIS IS OPTIONAL!!!
+
+Open apps menu (use Super key or Windows key)
+
+Type the "Software" on the search bar
+
+Find "Extension Manager" and install it.
+
+Open Extension Manager in the apps menu
+
+Go to "Browse" and search "Dash to Dock" and install it
+
+Then, back to the "Installed" and open the setting of "Dash to dock"
+
+Go to "Position on screen" and choose "Left"
+
+Choose icon size as 48
+
+Tick the "Autohide" so that it will hide when it obstruct browser windows
+
+
+#------------------------------------------------#
+#----- Dash to Panel (the top-size task bar) ----#
+#------------------------------------------------#
+
+Install "Extension Manager" like above (if not do it yet)
+
+Go to "Browse" and find "Dash to Panel" and install it
+
+Open "Dash to Panel" setting
+
+Choose "Panel screen position" as "Top"
+
+Set "Panel length" as "Dynamic"
+
+Set "Anchor" as "Right"
+
+Untick the "visible" of Show App button, Activities button, Left box, Taskbar
+
+Tick the "visible" of Center box, Right box, Date menu, System menu, Desktop button (all "Stacked to right")
+
+Tick the "Autohide" so that it will hide when it obstruct browser windows
+
+Set the "Panel length" to the smallest value (20%)
+
+Set "Required pressure timeout" and "Required pressure threshold" to maximum (5000)
+
+############# Disable show overview on startup
+
+Dash to Panel => Behavior (bottom edge) => Overview (scroll down) => Disable show overview on startup
+
+
+#-----------------------------------------------#
+#-------  enable right click on touch pad ------#
+#-----------------------------------------------#
+
+Open terminal and run this command:
+
+	gsettings set org.gnome.desktop.peripherals.touchpad click-method 'areas'
+
+
+#---------------------------------------------------------------#
+#-------  enable Maximize and Minimize of the web browser ------#
+#---------------------------------------------------------------#
+
+Run this command:
+
+	gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+
+
