@@ -54,6 +54,11 @@ Choose icon size as 48
 
 Tick the "Autohide" so that it will hide when it obstruct browser windows
 
+############# Disable show overview on startup
+
+Dash to Panel => Behavior (bottom edge) => Overview (scroll down) => Disable show overview on startup
+
+
 
 #------------------------------------------------#
 #----- Dash to Panel (the top-size task bar) ----#
