@@ -107,5 +107,19 @@ Open terminal and run this command:
 Run this command:
 
 	gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+	
+
+
+#------------------------------------------------------------#
+#------- download "variety" as wallpaper changer ------------#
+#------------------------------------------------------------#
+
+Go to "Software" -> Search -> Variety -> install
+
+Open "variety" applications => add wallpapers_dir => tick it and untick all the rest
+
+Set "Change every 10 minutes" and tick it
+
+Quotes => tick "Show random wise quotes on desktop"
 
 
