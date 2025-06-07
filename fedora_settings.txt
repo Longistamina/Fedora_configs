@@ -30,6 +30,14 @@ Set below information:
 Settings => Keyboard => View and customize shortcuts => Navigation => Switch windows => set "Alt + Tab"
 
 
+#---------------------------------------------------#
+#------- set hide all normal windows shortcut ------#
+#---------------------------------------------------#
+
+# This shortcut helps access the Desktop immediately
+
+Settings => Keyboard => View and customize shortcuts => Navigation => Hide all normal windows => set "Super/Windows + Tab"
+
 #--------------------------------------------#
 #----- Dash to Dock (the left-size dock) ----#
 #--------------------------------------------#
