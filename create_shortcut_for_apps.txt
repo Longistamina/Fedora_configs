@@ -1,0 +1,42 @@
+# To make your executable appear in the applications menu instead of the desktop, you need to place the .desktop file in a specific directory.
+
+# Location for Applications Menu
+nano ~/.local/share/applications/your-app-name.desktop
+
+# Alternative System-wide Location
+sudo nano /usr/share/applications/your-app-name.desktop
+
+# Add contents for the .desktop file like below and customize it
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/path/to/your/executable
+Name=Your App Name
+Comment=Description of your application
+Icon=/path/to/icon.png
+Categories=Network;Utility
+
+# Then, Ctrl+O to save and Ctrl+X to exit
+
+
+#---------------------------------------#
+#-------- Example with LMStudio --------#
+#---------------------------------------#
+
+sudo nano /usr/share/applications/LMStudio.desktop
+
+# or use nano ~/.local/share/applications/LMStudio.desktop
+
+# Customize the .desktop file
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/home/longdpt/lmstudio/LM-Studio-0.3.16-8-x64.AppImage
+Name=LMStudio
+Comment=LMStudio
+Icon=/home/longdpt/lmstudio/lmstudio_icon.jpg
+Categories=AI
+
+# Then, Ctrl+O to save and Ctrl+X to exit
