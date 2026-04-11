@@ -128,3 +128,14 @@ conda activate base
 # - Try different font sizes: 10pt, 12pt, or 14pt
 # - Verify font: fc-list | grep -i meslo
 
+########################
+## DISABLE Oh-My-Posh ##
+########################
+
+# Open ~/.bashrc
+gnome-text-editor ~/.bashrc
+nano ~/.bashrc
+
+# Delete or comment this command
+eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/mytheme.omp.json)"
+-> # eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/mytheme.omp.json)"
