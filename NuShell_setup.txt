@@ -75,9 +75,37 @@ deactivate
 
 # 6. Set env.path
 code $nu.env-path # (or nano $nu.env-path)
-$env.PATH = ($env.PATH | prepend '/home/longdpt/miniconda3/bin') # add to the bottom
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/bin' | prepend '/home/longdpt/miniconda3/bin' | prepend '/home/longdpt/.local/bin' | uniq) # add to the bottom
 activate env_name # (Optionally, can add this to the bottom after the above line to make nu automatically activate env)
 
 # 7. Set some "terminal.activate..." to false (Preferences: Open User Settings (JSON))
 "python.terminal.activateEnvironment": false,
 "python.terminal.activateEnvInCurrentTerminal": false,
+
+######################################
+## Alternative of "source ~/bashrc" ##
+######################################
+
+In nu, instead of using , use this:
+source $nu.config-path # Apply new config change
+source $nu.env-path # Apply new path change
+
+##################################
+## Oh-My-Posh setup for nushell ##
+##################################
+
+# 1. First, locate the path/to/theme.omp.json, for example:
+/home/longdpt/.config/oh-my-posh/quick_term.omp.json
+
+# 2. Run this command
+oh-my-posh init nu --config /home/longdpt/.config/oh-my-posh/quick_term.omp.json | save -f ~/.oh-my-posh.nu
+
+# 3. Open config file
+config nu
+code $nu.config-path
+
+# 4. Add this to the end of the file
+source ~/.oh-my-posh.nu
+
+# 5. Run this to update changes
+source $nu.config-path # Apply new config change
