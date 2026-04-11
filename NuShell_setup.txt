@@ -39,9 +39,12 @@ nano $nu.config-path
 # 2. Set the config.buffer_editor (at this to the bottom of the file)
 $env.config.buffer_editor = "gnome-text-editor" # (Can also be "code", "vim", ...)
 
-# 3. Save, exit the file
+# 3. Add this line in the file to in order to disable the welcome message
+$env.config.show_banner = false
 
-# 4. Restart nu, then run "config nu" to automatically open the nu config file
+# 4. Save, exit the file
+
+# 5. Restart nu, then run "config nu" to automatically open the nu config file
 
 ######################
 ## Set up for Conda ##
