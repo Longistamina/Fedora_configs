@@ -104,8 +104,16 @@ oh-my-posh init nu --config /home/longdpt/.config/oh-my-posh/quick_term.omp.json
 config nu
 code $nu.config-path
 
-# 4. Add this to the end of the file
+# 4. Add this to the end of the config file
 source ~/.oh-my-posh.nu
+
+# 5 Open nu.env-path
+code $nu.env-path
+nano $nu.env-path
+
+# 6. Add this to the env-path file
+$env.CONDA_NO_PROMPT = true
 
 # 5. Run this to update changes
 source $nu.config-path # Apply new config change
+source $nu.env-path
