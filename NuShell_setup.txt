@@ -1,0 +1,80 @@
+#####################################
+## (OPTIONAL) Install via homebrew ##
+#####################################
+
+# Follow the instruction of this page to install homebrew: https://brew.sh/
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Use homebrew to install Nushell
+brew install nushell
+
+########################
+## Install for ubuntu ##
+########################
+
+wget -qO- https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/fury-nushell.gpg
+echo "deb [signed-by=/etc/apt/keyrings/fury-nushell.gpg] https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury-nushell.list
+sudo apt update
+sudo apt install nushell
+
+#####################################
+## Set Nushell as default terminal ##
+#####################################
+
+# 1. Open the terminal
+# 2. Run "which nu" to get the path to nushell: /home/linuxbrew/.linuxbrew/bin/nu
+# 3. Right click
+# 4. Choose "Preferences"
+# 5. Move to "Command"
+# 6. Paste the path to "Run a custom command instead of my shell"
+
+#########################
+## Set up "config nu " ##
+#########################
+
+# 1. Open $nu.config-path using nano or vscode
+code $nu.config-path
+nano $nu.config-path
+
+# 2. Set the config.buffer_editor (at this to the bottom of the file)
+$env.config.buffer_editor = "gnome-text-editor" # (Can also be "code", "vim", ...)
+
+# 3. Save, exit the file
+
+# 4. Restart nu, then run "config nu" to automatically open the nu config file
+
+######################
+## Set up for Conda ##
+######################
+
+# 1. Inside NuShell, cd to ~, then run this
+git clone https://github.com/nushell/nu_scripts.git ~/.nu_scripts
+
+# 2. Open config file
+config nu
+
+# 3. Once the config.nu file is open, 
+# scroll all the way to the bottom and paste the module line from the previous step
+use ~/.nu_scripts/modules/virtual_environments/conda.nu *
+
+# 4. Set nushell as default profile in vscode, add this to settings.json (Preferences: Open User Settings (JSON))
+"terminal.integrated.profiles.linux": {
+        "Nushell": {
+            "path": "nu",
+            "icon": "terminal-bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "Nushell"
+
+# 5. Activate/Deactivate an env
+activate env_name # (NOTE: not conda activate env_name)
+deactivate
+
+# 6. Set env.path
+code $nu.env-path # (or nano $nu.env-path)
+$env.PATH = ($env.PATH | prepend '/home/longdpt/miniconda3/bin') # add to the bottom
+activate env_name # (Optionally, can add this to the bottom after the above line to make nu automatically activate env)
+
+# 7. Set some "terminal.activate..." to false (Preferences: Open User Settings (JSON))
+"python.terminal.activateEnvironment": false,
+"python.terminal.activateEnvInCurrentTerminal": false,
