@@ -77,6 +77,19 @@ $env.config.show_banner = false
 
 # 5. Restart nu, then run "config nu" to automatically open the nu config file
 
+################################
+## Set up for vscode/vscodium ##
+################################
+
+# Set nushell as default profile in vscode, add this to settings.json (Preferences: Open User Settings (JSON))
+"terminal.integrated.profiles.linux": {
+        "Nushell": {
+            "path": "nu",
+            "icon": "terminal-bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "Nushell"
+
 ######################
 ## Set up for Conda ##
 ######################
@@ -90,15 +103,6 @@ config nu
 # 3. Once the config.nu file is open, 
 # scroll all the way to the bottom and paste the module line from the previous step
 use ~/.nu_scripts/modules/virtual_environments/conda.nu *
-
-# 4. Set nushell as default profile in vscode, add this to settings.json (Preferences: Open User Settings (JSON))
-"terminal.integrated.profiles.linux": {
-        "Nushell": {
-            "path": "nu",
-            "icon": "terminal-bash"
-        }
-    },
-    "terminal.integrated.defaultProfile.linux": "Nushell"
 
 # 5. Activate/Deactivate an env
 activate env_name # (NOTE: not conda activate env_name)
@@ -160,3 +164,19 @@ cargo install nu_plugin_polars
 
 # 2. Add the plugin to nushell
 plugin add ~/.cargo/bin/nu_plugin_polars
+
+#############################
+## Setup alias for command ##
+#############################
+
+# 1. Open the nu config file
+config nu
+code $nu.config-path
+nano $nu.config-path
+
+# 2. Add these (example for polars)
+alias core-polars = polars # Back up the original command to a 'core' name
+alias pl = polars # Create your daily shortcut
+
+# 3. Run this to update changes
+source $nu.config-path
