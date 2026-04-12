@@ -1,12 +1,29 @@
-#####################################
-## (OPTIONAL) Install via homebrew ##
-#####################################
+##############################################
+## (OPTIONAL) Install via homebrew or cargo ##
+##############################################
+
+#--------------#
+#-- homebrew --#
+#--------------#
 
 # Follow the instruction of this page to install homebrew: https://brew.sh/
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Use homebrew to install Nushell
 brew install nushell
+
+# Update nushell
+brew update nushell
+
+#-----------#
+#-- cargo --#
+#-----------#
+
+# If you have Cargo and Rust, can use this
+cargo install nu --locked
+
+# Update with cargo (use the same command)
+cargo install nu --locked
 
 ########################
 ## Install for ubuntu ##
@@ -117,3 +134,15 @@ $env.CONDA_NO_PROMPT = true
 # 5. Run this to update changes
 source $nu.config-path # Apply new config change
 source $nu.env-path
+
+###############################
+## Polars plugin for nushell ##
+###############################
+
+# 0. Should install Rust and Cargo for this plugin
+
+# 1. Install nu_plugin_polars globally
+cargo install nu_plugin_polars
+
+# 2. Add the plugin to nushell
+plugin add ~/.cargo/bin/nu_plugin_polars
