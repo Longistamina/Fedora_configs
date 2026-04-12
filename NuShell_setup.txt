@@ -169,6 +169,10 @@ plugin add ~/.cargo/bin/nu_plugin_polars
 ## Setup alias for command ##
 #############################
 
+# 0. Check whether the intended alias is already existed
+which alias_name # for example: which pl
+^which alias_name # for example ^which pl
+
 # 1. Open the nu config file
 config nu
 code $nu.config-path
