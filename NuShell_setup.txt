@@ -45,6 +45,20 @@ sudo apt install nushell
 # 5. Move to "Command"
 # 6. Paste the path to "Run a custom command instead of my shell"
 
+####################################################################
+## Set Nushell as actual system default shell (CONSIDER CAREFULLY ##
+####################################################################
+
+# 1. Run this command in Nushell to append your Homebrew Nushell path to a security file called /etc/shells
+echo /home/linuxbrew/.linuxbrew/bin/nu | sudo tee -a /etc/shells
+
+# 2. Set Nushell as your default shell
+chsh -s /home/linuxbrew/.linuxbrew/bin/nu
+
+# 3. If you set "Run a custom command instead of my shell", untick it
+
+# 4. Reboot/Restart computer to apply changes
+
 #########################
 ## Set up "config nu " ##
 #########################
