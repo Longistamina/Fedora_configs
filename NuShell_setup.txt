@@ -39,7 +39,7 @@ sudo apt install nushell
 #####################################
 
 # 1. Open the terminal
-# 2. Run "which nu" to get the path to nushell: /home/linuxbrew/.linuxbrew/bin/nu
+# 2. Run "which nu" to get the path to nushell: /home/longdpt/.cargo/bin/nu
 # 3. Right click
 # 4. Choose "Preferences"
 # 5. Move to "Command"
@@ -50,10 +50,10 @@ sudo apt install nushell
 ####################################################################
 
 # 1. Run this command in Nushell to append your Homebrew Nushell path to a security file called /etc/shells
-echo /home/linuxbrew/.linuxbrew/bin/nu | sudo tee -a /etc/shells
+echo /home/longdpt/.cargo/bin/nu | sudo tee -a /etc/shells
 
 # 2. Set Nushell as your default shell
-chsh -s /home/linuxbrew/.linuxbrew/bin/nu
+chsh -s /home/longdpt/.cargo/bin/nu
 
 # 3. If you set "Run a custom command instead of my shell", untick it
 
@@ -129,7 +129,7 @@ deactivate
 
 # 6. Set env.path
 code $nu.env-path # (or nano $nu.env-path)
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/bin' | prepend '/home/longdpt/miniconda3/bin' | prepend '/home/longdpt/.local/bin' | uniq) # add to the bottom
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/longdpt/.cargo/bin/nu' | prepend '/home/longdpt/miniconda3/bin' | prepend '/home/longdpt/.local/bin' | uniq) # add to the bottom
 activate env_name # (Optionally, can add this to the bottom after the above line to make nu automatically activate env)
 
 # 7. Set some "terminal.activate..." to false (Preferences: Open User Settings (JSON))
@@ -222,6 +222,8 @@ alias core-polars = polars
 alias pl = polars
 
 alias ipt = /home/longdpt/miniconda3/envs/data/bin/ipython
+alias jpt = /home/longdpt/miniconda3/envs/data/bin/jupyter-lab
+alias mrm = /home/longdpt/miniconda3/envs/data/bin/marimo
 
 #################################################################################################
 ##                                     Current "config env"                                    ##
@@ -229,7 +231,7 @@ alias ipt = /home/longdpt/miniconda3/envs/data/bin/ipython
 
 $env.config.buffer_editor = "gnome-text-editor"
 
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/bin' | prepend '/home/longdpt/miniconda3/bin' | prepend '/home/longdpt/.local/bin' | uniq)
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/longdpt/.cargo/bin/nu' | prepend '/home/longdpt/miniconda3/bin' | prepend '/home/longdpt/.local/bin' | uniq)
 
 $env.CONDA_NO_PROMPT = true
 $env.CONDA_DEFAULT_ENV = "base"
