@@ -228,6 +228,11 @@ alias ipt = /home/longdpt/miniconda3/envs/data/bin/ipython
 #################################################################################################
 
 $env.config.buffer_editor = "gnome-text-editor"
+
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/bin' | prepend '/home/longdpt/miniconda3/bin' | prepend '/home/longdpt/.local/bin' | uniq)
+
 $env.CONDA_NO_PROMPT = true
+$env.CONDA_DEFAULT_ENV = "base"
+$env.CONDA_PREFIX = "/home/longdpt/miniconda3"
+
 $env.DATAR_VERB_AST_FALLBACK = "piping"
