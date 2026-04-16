@@ -224,6 +224,7 @@ alias pl = polars
 alias ipt = /home/longdpt/miniconda3/envs/data/bin/ipython
 alias jpt = /home/longdpt/miniconda3/envs/data/bin/jupyter-lab
 alias mrm = /home/longdpt/miniconda3/envs/data/bin/marimo
+alias py3 = /home/longdpt/miniconda3/envs/data/bin/python3
 
 #################################################################################################
 ##                                     Current "config env"                                    ##
