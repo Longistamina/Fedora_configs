@@ -59,9 +59,13 @@ chsh -s /home/linuxbrew/.linuxbrew/bin/nu
 
 # 4. Reboot/Restart computer to apply changes
 
-#########################
-## Set up "config nu " ##
-#########################
+#########################################
+## Set up "config nu" and "config env" ##
+#########################################
+
+#---------------#
+#-- config nu --#
+#---------------#
 
 # 1. Open $nu.config-path using nano or vscode
 code $nu.config-path
@@ -76,6 +80,21 @@ $env.config.show_banner = false
 # 4. Save, exit the file
 
 # 5. Restart nu, then run "config nu" to automatically open the nu config file
+
+#----------------#
+#-- config env --#
+#----------------#
+
+# 1. Open $nu.env-path using nano or vscode
+code $nu.env-path
+nano $nu.env-path
+
+# 2. Set the config.buffer_editor (at this to the bottom of the file)
+$env.config.buffer_editor = "gnome-text-editor" # (Can also be "code", "vim", ...)
+
+# 3. Save, exit the file
+
+# 4. Restart nu, then run "config env" to automatically open the nu env file
 
 ################################
 ## Set up for vscode/vscodium ##
@@ -184,3 +203,31 @@ alias pl = polars # Create your daily shortcut
 
 # 3. Run this to update changes
 source $nu.config-path
+
+################################################################################################
+##                                     Current "config nu"                                    ##
+################################################################################################
+
+$env.config.buffer_editor = "gnome-text-editor"
+
+$env.config.show_banner = false
+
+use ~/.nu_scripts/modules/virtual_environments/conda.nu *
+# activate data
+
+source ~/.oh-my-posh.nu
+
+# Alias for polars and backup
+alias core-polars = polars
+alias pl = polars
+
+alias ipt = /home/longdpt/miniconda3/envs/data/bin/ipython
+
+#################################################################################################
+##                                     Current "config env"                                    ##
+#################################################################################################
+
+$env.config.buffer_editor = "gnome-text-editor"
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/bin' | prepend '/home/longdpt/miniconda3/bin' | prepend '/home/longdpt/.local/bin' | uniq)
+$env.CONDA_NO_PROMPT = true
+$env.DATAR_VERB_AST_FALLBACK = "piping"
