@@ -213,7 +213,7 @@ $env.config.buffer_editor = "gnome-text-editor"
 $env.config.show_banner = false
 
 use ~/.nu_scripts/modules/virtual_environments/conda.nu *
-# activate data
+# activate dl
 
 source ~/.oh-my-posh.nu
 
@@ -221,10 +221,11 @@ source ~/.oh-my-posh.nu
 alias core-polars = polars
 alias pl = polars
 
-alias ipt = /home/longdpt/miniconda3/envs/data/bin/ipython
-alias jpt = /home/longdpt/miniconda3/envs/data/bin/jupyter-lab
-alias mrm = /home/longdpt/miniconda3/envs/data/bin/marimo
-alias py3 = /home/longdpt/miniconda3/envs/data/bin/python3
+alias bpt = /home/longdpt/miniconda3/envs/dl/bin/bpython
+alias ipt = /home/longdpt/miniconda3/envs/dl/bin/ipython
+alias jpt = /home/longdpt/miniconda3/envs/dl/bin/jupyter-lab
+alias mrm = /home/longdpt/miniconda3/envs/dl/bin/marimo
+alias py3 = /home/longdpt/miniconda3/envs/dl/bin/python3
 
 #################################################################################################
 ##                                     Current "config env"                                    ##
