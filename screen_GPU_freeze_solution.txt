@@ -1,0 +1,41 @@
+journalctl -b -1 -p 3 -x --no-pager
+# Use this command to display the problem -> copy-paste to AI
+
+================================
+
+6.11.0-1015-oem
+brave://flags -> hardware-accelerated video decode -> disabled
+use ROCM 7.2.x
+
+bị hanged-> Ctrl + Alt + F1 -> Suspend -> Press something to escape the suspend ->  Ctrl + Alt + F3-> Ctrl + Alt + F1 -> Login
+
+================================
+
+sudo nano /etc/modprobe.d/blacklist-amd-pmf.conf
+-> Type this single line into it: blacklist amd_pmf
+
+sudo nano /etc/modprobe.d/blacklist-amd-isp.conf
+-> blacklist amd_isp
+blacklist i2c_amd_isp
+blacklist amd_isp_i2c_designware
+-> ctrl O, and ctrl X
+
+mkdir -p ~/.config/wireplumber/wireplumber.conf.d
+nano ~/.config/wireplumber/wireplumber.conf.d/51-disable-camera.conf
+# Add this to the disable-camera.conf
+wireplumber.profiles = {
+  main = {
+    monitor.libcamera = disabled
+  }
+}
+
+================================
+
+sudo nano /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amdgpu.dcdebugmask=0x10 modprobe.blacklist=amd_isp,amd_isp_i2c_designware,i2c_amd_isp amdgpu.sg_display=0 iommu=pt amd_iommu=on amdgpu.gttsize=131072 ttm.pages_limit=33554432"
+sudo update-grub
+
+sudo update-initramfs -u -k $(uname -r)
+
+
+
