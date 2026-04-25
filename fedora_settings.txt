@@ -144,4 +144,15 @@ Set "Change every 10 minutes" and tick it
 
 Quotes => tick "Show random wise quotes on desktop"
 
+#------------------------------------#
+#------- Other shortcuts ------------#
+#------------------------------------#
+
+# Disable Alt+Tab as switch-applications
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
+
+# Set Alt+Tab as switching windows
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
 
