@@ -217,7 +217,7 @@ $env.config.show_banner = false
 source ~/.oh-my-posh.nu
 
 use ~/.nu_scripts/modules/virtual_environments/conda.nu *
-$env.config = ($env.config | upsert color_config.hints { fg: "#515475", attr: "i" })
+$env.config = ($env.config | upsert color_config.hints { fg: "#6C6F93", attr: "i" })
 
 alias core-polars = polars
 alias pl = polars
