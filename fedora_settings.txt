@@ -119,8 +119,18 @@ Open terminal and run this command:
 Run this command:
 
 	gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
-	
 
+
+#-------------------------------------------------#
+#------- Vietnamese typing for fedora ------------#
+#-------------------------------------------------#
+
+sudo dnf install ibus-bamboo
+ibus restart
+
+# Then, go to Settings
+# -> "+ Add input source"
+# -> Vietnamese > Vietnamese (Bamboo)
 
 #------------------------------------------------------------#
 #------- download "variety" as wallpaper changer ------------#
