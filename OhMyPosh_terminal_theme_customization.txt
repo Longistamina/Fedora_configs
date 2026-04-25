@@ -9,9 +9,11 @@
 # Install oh-my-posh (do NOT use sudo - user installation only)
 # This installs to ~/.local/bin by default
 curl -s https://ohmyposh.dev/install.sh | bash -s
+http get https://ohmyposh.dev/install.sh | bash # for nushell
 
 # Then export file to make the command work for this session
 export PATH=$PATH:$HOME/.local/bin
+$env.PATH = ($env.PATH | append $"($env.HOME)/.local/bin") # for nushell
 
 ###############################
 ## Step 2: Install Nerd Font ##

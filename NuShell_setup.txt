@@ -149,10 +149,10 @@ source $nu.env-path # Apply new path change
 ##################################
 
 # 1. First, locate the path/to/theme.omp.json, for example:
-/home/longdpt/.config/oh-my-posh/quick_term.omp.json
+/home/longdpt/.config/oh-my-posh/blueish_theme.omp.json
 
 # 2. Run this command
-oh-my-posh init nu --config /home/longdpt/.config/oh-my-posh/quick_term.omp.json | save -f ~/.oh-my-posh.nu
+oh-my-posh init nu --config /home/longdpt/.config/oh-my-posh/blueish_theme.omp.json | save -f ~/.oh-my-posh.nu
 
 # 3. Open config file
 config nu
