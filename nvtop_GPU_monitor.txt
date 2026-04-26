@@ -1,0 +1,2 @@
+sudo apt install nvtop
+sudo dnf install nvtop # fedora
