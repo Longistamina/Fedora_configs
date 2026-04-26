@@ -161,3 +161,22 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift
 #-----------------------------------#
 
 Ayu Mirage
+
+#------------------------------------------------------------------#
+#------- Setup GNOME classic (for stability with zoom) ------------#
+#------------------------------------------------------------------#
+
+sudo nano /usr/share/gnome-shell/modes/classic.json
+{
+    "parentMode": "user",
+    "colorScheme": "force-dark",
+    "showWelcomeDialog": false,
+    "enabledExtensions": ["apps-menu@gnome-shell-extensions.gcampax.github.com", "places-menu@gnome-shell-extensions.gcampax.github>
+    "panel": { "left": ["activities"],
+               "center": [],
+               "right": ["dateMenu", "screenRecording", "screenSharing", "dwellClick", "a11y", "keyboard", "quickSettings"]
+             }
+}
+
+# In Extensions Manager (install it if not yet)
+Turn off the "Windows list" and "Apps menu" (can also "Places" if want)
