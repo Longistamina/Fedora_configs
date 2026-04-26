@@ -1,0 +1,15 @@
+# Download uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+cargo install --locked uv # if Rust and cargo were installed before
+
+cd ~
+uv venv myenv --python 3.13 # or 3.12
+uv pip install numpy pandas ipython <and_other_libraries_names> --python ~/myenv/bin/python
+
+# For example:
+uv pip marimo install ipython bpython jupyterlab termcolor regex loguru pytz numpy pandas datar[pandas] polars matplotlib seaborn plotnine plotly scipy statsmodels sympy cvxpy scikit-learn imblearn xgboost hdbscan mlxtend pyECLAT umap-learn[plot] pmdarima --python ~/myenv/bin/python
+
+# Then try to set up alias like to make usage easier
+py3 = ~/myenv/bin/python3.13
+ipt = ~/myenv/bin/ipython
+uv-myenv-install = uv pip install --python ~/myenv/bin/python

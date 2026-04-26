@@ -214,19 +214,23 @@ source $nu.config-path
 $env.config.buffer_editor = "gnome-text-editor"
 $env.config.show_banner = false
 
-source ~/.oh-my-posh.nu
-
 use ~/.nu_scripts/modules/virtual_environments/conda.nu *
 $env.config = ($env.config | upsert color_config.hints { fg: "#6C6F93", attr: "i" })
 
 alias core-polars = polars
 alias pl = polars
 
-alias ipt = /home/longdpt/miniconda3/envs/dl/bin/ipython
-alias bpt = /home/longdpt/miniconda3/envs/dl/bin/bpython
-alias jpt = /home/longdpt/miniconda3/envs/dl/bin/jupyter-lab
-alias py3 = /home/longdpt/miniconda3/envs/dl/bin/python3
-alias mrm = /home/longdpt/miniconda3/envs/dl/bin/marimo
+alias ipt = /home/longdpt/dl/bin/ipython
+alias bpt = /home/longdpt/dl/bin/bpython
+alias jpt = /home/longdpt/dl/bin/jupyter-lab
+alias py3 = /home/longdpt/dl/bin/python3
+alias mrm = /home/longdpt/dl/bin/marimo
+
+# alias ipt = /home/longdpt/miniconda3/envs/dl/bin/ipython
+# alias bpt = /home/longdpt/miniconda3/envs/dl/bin/bpython
+# alias jpt = /home/longdpt/miniconda3/envs/dl/bin/jupyter-lab
+# alias py3 = /home/longdpt/miniconda3/envs/dl/bin/python3
+# alias mrm = /home/longdpt/miniconda3/envs/dl/bin/marimo
 
 #################################################################################################
 ##                                     Current "config env"                                    ##
@@ -237,6 +241,7 @@ $env.CONDA_NO_PROMPT = true
 
 $env.PATH = ($env.PATH | append $"($env.HOME)/.local/bin")
 $env.PATH = ($env.PATH | append $"($env.HOME)/.cargo/bin")
+$env.PATH = ($env.PATH | append $"($env.HOME)/dl/bin")
 $env.PATH = ($env.PATH | append $"($env.HOME)/miniconda3/bin")
 
 source ~/.oh-my-posh.nu
