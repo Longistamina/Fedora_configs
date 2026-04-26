@@ -31,6 +31,18 @@ wireplumber.profiles = {
 
 ================================
 
+# If using Brave browser and wayland
+nano ~/.var/app/com.brave.Browser/config/brave-flags.conf
+
+# Add these lines in the .conf file, then save and exit (Ctr+O and Ctrl+X)
+--ozone-platform=wayland
+--enable-features=WaylandWindowDecorations
+
+# Clear GPU cache
+rm -rf ~/.var/app/com.brave.Browser/config/BraveSoftware/Brave-Browser/Default/GPUCache/
+
+================================
+
 sudo nano /etc/default/grub
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amdgpu.dcdebugmask=0x10 modprobe.blacklist=amd_isp,amd_isp_i2c_designware,i2c_amd_isp amdgpu.sg_display=0 iommu=pt amd_iommu=on amdgpu.gttsize=131072 ttm.pages_limit=33554432"
 sudo update-grub
