@@ -239,8 +239,11 @@ $env.PATH = ($env.PATH | append $"($env.HOME)/.local/bin")
 $env.PATH = ($env.PATH | append $"($env.HOME)/.cargo/bin")
 $env.PATH = ($env.PATH | append $"($env.HOME)/miniconda3/bin")
 
-$env.CONDA_NO_PROMPT = true
+source ~/.oh-my-posh.nu
+
+# $env.CONDA_NO_PROMPT = true
 # $env.CONDA_DEFAULT_ENV = "base"
 # $env.CONDA_PREFIX = "/home/longdpt/miniconda3"
 
 $env.DATAR_VERB_AST_FALLBACK = "piping"
+$env.TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL = "1"
