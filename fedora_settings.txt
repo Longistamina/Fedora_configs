@@ -173,8 +173,8 @@ sudo nano /usr/share/gnome-shell/modes/classic.json
     "showWelcomeDialog": false,
     "enabledExtensions": ["apps-menu@gnome-shell-extensions.gcampax.github.com", "places-menu@gnome-shell-extensions.gcampax.github>
     "panel": { "left": ["activities"],
-               "center": [],
-               "right": ["dateMenu", "screenRecording", "screenSharing", "dwellClick", "a11y", "keyboard", "quickSettings"]
+               "center": ["dateMenu"],
+               "right": ["screenRecording", "screenSharing", "dwellClick", "a11y", "keyboard", "quickSettings"]
              }
 }
 
