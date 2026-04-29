@@ -172,7 +172,7 @@ Ayu Mirage
 #------- Setup GNOME classic (for stability with zoom) ------------#
 #------------------------------------------------------------------#
 
-sudo nano /usr/share/gnome-shell/modes/classic.json
+sudo gnome-text-editors /usr/share/gnome-shell/modes/classic.json
 {
     "parentMode": "user",
     "colorScheme": "force-dark",
