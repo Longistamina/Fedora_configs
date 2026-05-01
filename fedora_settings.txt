@@ -98,10 +98,27 @@ Set the "Panel length" to the smallest value (20%)
 
 Set "Required pressure timeout" and "Required pressure threshold" to maximum (5000)
 
-############# Disable show overview on startup
+#------------------------------------------------#
+#-------  Disable show overview on startup ------#
+#------------------------------------------------#
 
-Dash to Panel => Behavior (bottom edge) => Overview (scroll down) => Disable show overview on startup
+################################
+## Method 1: use Dash To Dock ##
+################################
 
+Dash To Dock -> Appearence -> Turn off "Show overview on startup"
+
+###################################
+## Method 2: use Just Perfection ##
+###################################
+
+Just Perfection -> Behaviour -> Startup status (scroll down) -> choose "Desktop"
+
+############################
+## Method 3: installation ##
+############################
+
+sudo dnf install gnome-shell-extension-no-overview
 
 #-----------------------------------------------#
 #-------  enable right click on touch pad ------#

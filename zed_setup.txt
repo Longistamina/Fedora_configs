@@ -1,0 +1,115 @@
+###########################
+## zed config .json file ##
+###########################
+
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "auto_update": false,
+  //////////////////////////////////////////
+  "minimum_contrast_for_highlights": 40.0,
+  "selection_highlight": true,
+  "rounded_selection": true,
+  "current_line_highlight": "all",
+  "unnecessary_code_fade": 0.5,
+  "ui_font_weight": 200.0,
+  "buffer_font_weight": 200.0,
+  "buffer_font_family": "MesloLGL Nerd Font",
+  //////////////////////////////////////////
+  "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
+    "default_model": {
+      "provider": "ollama",
+      "model": "gemma4:26b",
+      "enable_thinking": true,
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  //////////////////////////////////////////
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "provider": "zed",
+    "ollama": {
+      "model": "deepseek-coder-v2:16b",
+    },
+  },
+  /////////////////////////////////////////
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  /////////////////////////////////////////
+  "diagnostics_max_severity": "warning",
+  /////////////////////////////////////////
+  "project_panel": {
+    "dock": "left",
+  },
+  /////////////////////////////////////////
+  "languages": {
+    "Python": {
+      "language_servers": ["ruff", "basedpyright"],
+      "format_on_save": "off",
+    },
+    "Rust": {
+      "format_on_save": "off",
+    },
+  },
+  /////////////////////////////////////////
+  "agent_servers": {
+    "github-copilot-cli": {
+      "type": "registry",
+    },
+  },
+  /////////////////////////////////////////
+  "icon_theme": "Material Icon Theme",
+  "terminal": {
+    "font_size": 16.0,
+    "font_family": "MesloLGM Nerd Font",
+    "detect_venv": "off",
+  },
+  "base_keymap": "VSCode",
+  "ui_font_size": 16.0,
+  "buffer_font_size": 15.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "VSCode Modern Dark",
+  },
+}
+
+############################
+## zed handle busy cursor ##
+############################
+
+gnome-text-editor ~/.local/share/applications/zed.desktop
+
+#------#
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Zed
+GenericName=Text Editor
+Comment=A high-performance, multiplayer code editor.
+TryExec=/home/longdpt/.local/zed.app/bin/zed
+StartupNotify=false
+Exec=bash -l -c "/home/longdpt/.local/zed.app/bin/zed %U"
+Icon=/home/longdpt/.local/zed.app/share/icons/hicolor/512x512/apps/zed.png
+Categories=Utility;TextEditor;Development;IDE;
+Keywords=zed;
+MimeType=text/plain;application/x-zerosize;x-scheme-handler/zed;
+Actions=NewWorkspace;
+
+[Desktop Action NewWorkspace]
+Exec=bash -l -c "/home/longdpt/.local/zed.app/bin/zed --new %U"
+Name=Open a new workspace
+#------#
+
+update-desktop-database ~/.local/share/applications/
