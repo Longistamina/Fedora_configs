@@ -52,7 +52,7 @@ sudo update-initramfs -u -k $(uname -r)
 #### fedora ####
 
 sudo nano /etc/default/grub
-GRUB_CMDLINE_LINUX="rd.luks.uuid=luks-1b9344ac-e45a-4cca-a86e-1c35a5f6327b rhgb quiet iommu=pt amd_iommu=on amdgpu.cwsr_enable=0 amdgpu.sg_display=0"
+GRUB_CMDLINE_LINUX="rd.luks.uuid=luks-1b9344ac-e45a-4cca-a86e-1c35a5f6327b rhgb quiet iommu=pt amd_iommu=on amdgpu.cwsr_enable=0 amdgpu.sg_display=0 amdgpu.dcdebugmask=0x10"
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 
