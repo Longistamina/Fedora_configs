@@ -161,6 +161,12 @@ Set "Change every 10 minutes" and tick it
 
 Quotes => tick "Show random wise quotes on desktop"
 
+#--------------------------------------------------------------------------------------------#
+#---------------- Disable the popup window "Allowing Remote Interaction ---------------------#
+#--------------------------------------------------------------------------------------------#
+
+gsettings set org.gnome.mutter.wayland xwayland-disable-extension '["Xtest"]'
+
 #------------------------------------#
 #------- Other shortcuts ------------#
 #------------------------------------#
