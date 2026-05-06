@@ -147,34 +147,6 @@ In nu, instead of using , use this:
 source $nu.config-path # Apply new config change
 source $nu.env-path # Apply new path change
 
-##################################
-## Oh-My-Posh setup for nushell ##
-##################################
-
-# 1. First, locate the path/to/theme.omp.json, for example:
-/home/longdpt/.config/oh-my-posh/blueish_theme.omp.json
-
-# 2. Run this command
-oh-my-posh init nu --config /home/longdpt/.config/oh-my-posh/blueish_theme.omp.json | save -f ~/.oh-my-posh.nu
-
-# 3. Open config file
-config nu
-code $nu.config-path
-
-# 4. Add this to the end of the config file
-source ~/.oh-my-posh.nu
-
-# 5 Open nu.env-path
-code $nu.env-path
-nano $nu.env-path
-
-# 6. Add this to the env-path file
-$env.CONDA_NO_PROMPT = true
-
-# 5. Run this to update changes
-source $nu.config-path # Apply new config change
-source $nu.env-path
-
 ###############################
 ## Polars plugin for nushell ##
 ###############################
@@ -245,8 +217,6 @@ $env.PATH = ($env.PATH | append $"($env.HOME)/.local/bin")
 $env.PATH = ($env.PATH | append $"($env.HOME)/.cargo/bin")
 $env.PATH = ($env.PATH | append $"($env.HOME)/dl/bin")
 $env.PATH = ($env.PATH | append $"($env.HOME)/miniconda3/bin")
-
-source ~/.oh-my-posh.nu
 
 # $env.CONDA_NO_PROMPT = true
 # $env.CONDA_DEFAULT_ENV = "base"

@@ -1,0 +1,36 @@
+################################################
+## Starship Setup Guide - Ubuntu/Fedora Linux ##
+################################################
+
+##############################
+## Step 1: Install starship ##
+##############################
+
+curl -sS https://starship.rs/install.sh | sh
+
+###############################################
+## Step 2: Set up your shell to use Starship ##
+###############################################
+
+# bash
+eval "$(starship init bash)"
+
+# nushell
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+##########################################
+## Step 3: Set preset (Gruvbox Rainbow) ##
+##########################################
+
+starship preset gruvbox-rainbow -o ~/.config/starship.toml
+
+# Modify the directory to show full path
+gnome-text-editor ~/.config/starship.toml
+
+[directory]
+style = "fg:color_fg0 bg:color_yellow"
+format = "[ $path ]($style)"
+truncate_to_repo = false
+truncation_length = 0
+# truncation_symbol = "…/"
