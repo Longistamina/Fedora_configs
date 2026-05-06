@@ -85,6 +85,13 @@
   },
 }
 
+#################################
+## editor: show signature help ##
+#################################
+
+Zed -> Open Keymap -> editor: show signature help -> set as "Shift + Tab"
+Zed -> Open Keymap -> editor: backtab -> set as "Ctrl + Tab"
+
 ############################
 ## zed handle busy cursor ##
 ############################
