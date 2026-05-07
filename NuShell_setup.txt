@@ -194,6 +194,9 @@ alias gntxt = gnome-text-editor
 alias core-polars = polars
 alias pl = polars
 
+alias uv-dl-install = uv pip install --python ~/dl/bin/python3
+alias uv-dl-uninstall = uv pip uninstall --python ~/dl/bin/python3
+
 alias ipt = /home/longdpt/dl/bin/ipython
 alias bpt = /home/longdpt/dl/bin/bpython
 alias jpt = /home/longdpt/dl/bin/jupyter-lab
