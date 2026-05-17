@@ -1,0 +1,42 @@
+###########################
+## 1. Install fish shell ##
+###########################
+
+# Fedora
+sudo dnf install fish
+
+# Ubuntu
+sudo apt-add-repository ppa:fish-shell/release-4
+sudo apt update
+sudo apt install fish
+
+#########################################################
+## 2. Set fish shell as as actual system default shell ##
+#########################################################
+
+# 1. Run this command in Nushell to append your Homebrew Nushell path to a security file called /etc/shells (for fish shell, it's already there)
+echo /usr/bin/fish | sudo tee -a /etc/shells
+
+# 2. Set Nushell as your default shell
+chsh -s /usr/bin/fish
+
+# 3. If you set "Run a custom command instead of my shell", untick it
+
+# 4. Reboot/Restart computer to apply changes
+
+################################
+## 3. Setup alias for command ##
+################################
+
+alias --save gntxt="gnome-text-editor"
+
+alias --save nu="/home/longdpt/.cargo/bin/nu" # If have nushell
+
+alias uv-dl-install="uv pip install --python ~/dl/bin/python3"
+alias uv-dl-uninstall="uv pip uninstall --python ~/dl/bin/python3"
+
+alias --save ipt="/home/longdpt/dl/bin/ipython"
+alias --save bpt="/home/longdpt/dl/bin/bpython"
+alias --save jpt="/home/longdpt/dl/bin/jupyter-lab"
+alias --save py3="/home/longdpt/dl/bin/python3"
+alias --save mrm="/home/longdpt/dl/bin/marimo"
