@@ -106,8 +106,9 @@ Name=Zed
 GenericName=Text Editor
 Comment=A high-performance, multiplayer code editor.
 TryExec=/home/longdpt/.local/zed.app/bin/zed
-StartupNotify=false
-Exec=bash -l -c "/home/longdpt/.local/zed.app/bin/zed %U"
+StartupNotify=true
+StartupWMClass=dev.zed.Zed
+Exec=bash -l -c 'exec /usr/bin/env -u WAYLAND_DISPLAY /home/longdpt/.local/zed.app/bin/zed "$@"' zed %U
 Icon=/home/longdpt/.local/zed.app/share/icons/hicolor/512x512/apps/zed.png
 Categories=Utility;TextEditor;Development;IDE;
 Keywords=zed;
@@ -115,7 +116,7 @@ MimeType=text/plain;application/x-zerosize;x-scheme-handler/zed;
 Actions=NewWorkspace;
 
 [Desktop Action NewWorkspace]
-Exec=bash -l -c "/home/longdpt/.local/zed.app/bin/zed --new %U"
+Exec=bash -l -c 'exec /usr/bin/env -u WAYLAND_DISPLAY /home/longdpt/.local/zed.app/bin/zed --new "$@"' zed %U
 Name=Open a new workspace
 #------#
 
