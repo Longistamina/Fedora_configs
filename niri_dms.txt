@@ -1,0 +1,69 @@
+#############################
+## Install and launch niri ##
+#############################
+
+sudo dnf install niri
+
+Open "Alarchy" terminal
+=> run "niri-session"
+
+#######################
+## Vietnamese typing ##
+#######################
+
+sudo dnf install fcitx5 fcitx5-bamboo fcitx5-configtool
+
+Open "~/.config/niri/config.kdl"
+=> add 'spawn-at-startup "fcitx5 -d --replace"'
+=> add
+environment {
+    GTK_IM_MODULE "fcitx"
+    QT_IM_MODULE "fcitx"
+    XMODIFIERS "@im=fcitx"
+    GLFW_IM_MODULE "ibus" // Some apps, like Minecraft, use this variable
+}
+
+git clone https://github.com/fcitx/fcitx5-bamboo.git
+cd fcitx5-bamboo
+
+git submodule init
+git submodule update
+
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+make
+sudo make install
+
+# Set Alt+Z to switch input
+fcitx5-configtool -> Global Options -> Toggle Input Method -> ALt+Z
+
+################################
+## Use fedora ptyxis terminal ##
+################################
+
+Niri Settings -> Keyboard Shortcuts -> Find "Mod+T" -> Change the "Comamnd" to "ptyxis"
+
+###############################################
+## Install DankMaterialShell (dms) for dock) ##
+###############################################
+
+curl -fsSL https://install.danklinux.com | sh
+
+# Choose "Alarchy" terminal emulator
+# Go to Settings
+# Go to "Dock and Launcher"
+# Go to "Dock" -> Turn on "Show dock", "Auto hide", "Left"
+
+###############################
+## Modification for Audacity ##
+###############################
+
+flatpak override --user --nosocket=wayland org.audacityteam.Audacity
+
+#############################
+## Shortcut for Zed editor ##
+#############################
+
+Niri Settings -> Keyboard Shortcuts -> Add "Mod+Z" -> Type "Command"
+-> /home/longdpt/.local/bin/zed
