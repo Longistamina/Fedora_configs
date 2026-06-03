@@ -32,8 +32,8 @@ alias --save gntxt="gnome-text-editor"
 
 alias --save nu="/home/longdpt/.cargo/bin/nu" # If have nushell
 
-alias uv-dl-install="uv pip install --python ~/dl/bin/python3"
-alias uv-dl-uninstall="uv pip uninstall --python ~/dl/bin/python3"
+alias --save uv-dl-install="uv pip install --python ~/dl/bin/python3"
+alias --save uv-dl-uninstall="uv pip uninstall --python ~/dl/bin/python3"
 
 alias --save ipt="/home/longdpt/dl/bin/ipython"
 alias --save bpt="/home/longdpt/dl/bin/bpython"
