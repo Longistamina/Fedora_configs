@@ -85,12 +85,25 @@
   },
 }
 
-#################################
-## editor: show signature help ##
-#################################
+######################
+## Keymap shortcuts ##
+######################
+
+Zed -> Open Keymap -> task: rerun -> set as "Ctrl + R"
+
+Zed -> Open Keymap -> repl: run -> set as "Shift + Enter"
+Zed -> Open Keymap -> repl: restart -> set as "Ctrl + Shift + R"
 
 Zed -> Open Keymap -> editor: show signature help -> set as "Shift + Tab"
 Zed -> Open Keymap -> editor: backtab -> set as "Ctrl + Tab"
+
+####################################
+## Register Python Jupyter kernel ##
+####################################
+
+python3 -m ipykernel install --user --name=<conda_env_name>
+
+example: python3 -m ipykernel install --user --name=data
 
 ############################
 ## zed handle busy cursor ##
