@@ -19,6 +19,7 @@ echo /usr/bin/fish | sudo tee -a /etc/shells
 
 # 2. Set Nushell as your default shell
 chsh -s /usr/bin/fish
+sudo chsh -s /usr/bin/fish longdpt
 
 # 3. If you set "Run a custom command instead of my shell", untick it
 
