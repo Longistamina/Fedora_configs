@@ -11,6 +11,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  /////////////////////////////////
   "auto_update": false,
   //////////////////////////////////////////
   "minimum_contrast_for_highlights": 40.0,
@@ -97,13 +98,94 @@ Zed -> Open Keymap -> repl: restart -> set as "Ctrl + Shift + R"
 Zed -> Open Keymap -> editor: show signature help -> set as "Shift + Tab"
 Zed -> Open Keymap -> editor: backtab -> set as "Ctrl + Tab"
 
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor && jupyter",
+    "bindings": {
+      "shift-enter": "repl::RunInPlace",
+      "ctrl-shift-i": "repl::Interrupt",
+      "ctrl-shift-r": "repl::Restart",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-l": "terminal::Clear",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-enter": ["terminal::SendText", "\u001b[3;5~"],
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-r": "task::Rerun"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "shift-tab": "editor::ShowSignatureHelp"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-tab": "editor::Backtab"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-r": [
+        "task::Rerun",
+        {
+          "reevaluate_context": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "((Editor && jupyter) && !ContextEditor)",
+    "bindings": {
+      "ctrl-shift-enter": null
+    }
+  },
+  {
+    "context": "((Editor && jupyter) && !ContextEditor)",
+    "bindings": {
+      "ctrl-alt-enter": null
+    }
+  }
+]
+
 ####################################
 ## Register Python Jupyter kernel ##
 ####################################
 
-python3 -m ipykernel install --user --name=<conda_env_name>
+# activate environment
+source ~/<env_name>/bin/activate.fish # for uv, can also use ``source ~/dl/bin/activate.sh``
+conda active <env_name> # for conda
 
-example: python3 -m ipykernel install --user --name=data
+# Install ipykernel
+python3 -m ipykernel install --user --name=<env_name> # example: python3 -m ipykernel install --user --name=dl
+
+~ = /home/username/ (/home/longdpt/)
 
 ############################
 ## zed handle busy cursor ##

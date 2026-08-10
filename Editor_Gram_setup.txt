@@ -1,0 +1,240 @@
+##################
+## Install Gram ##
+##################
+
+# For fedora
+sudo dnf config-manager addrepo --from-repofile="https://codeberg.org/api/packages/GramEditor/rpm.repo"
+sudo dnf install gram --nogpgcheck
+
+# For ubuntu/debian
+# Add the repository key
+sudo curl https://codeberg.org/api/packages/GramEditor/debian/repository.key -o /etc/apt/keyrings/forgejo-GramEditor.asc
+# Add the repository file
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/forgejo-GramEditor.asc] https://codeberg.org/api/packages/GramEditor/debian gram release" | sudo tee -a /etc/apt/sources.list.d/gram.list
+# Update package cache and install
+sudo apt update && sudo apt install gram
+
+########################################
+## Download language servers for Gram ##
+########################################
+
+# activate environment
+source ~/<env_name>/bin/activate.fish # for uv, can also use ``source ~/dl/bin/activate.sh``
+conda active <env_name> # for conda
+
+# install language servers
+pip3 install basedpyright ruff
+uv pip install --python /path/to/env_name/bin/python basedpyright ruff # for uv env
+uv-dl-install basedpyright ruff # for my env
+
+############################
+## gram config .json file ##
+############################
+// Gram settings
+//
+// For information on how to configure Gram, see the Gram
+// documentation: gram://docs/configuring-gram
+//
+// To see all of Gram's default settings without changing your
+// custom settings, run `gram: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+
+{
+  "restore_on_startup": "last_workspace",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Gram (Default)",
+    "dark": "Material Icon Theme"
+  },
+  ///////////////////////////////////////////
+  "terminal": {
+    "font_size": 16.0,
+    "font_family": "MesloLGM Nerd Font"
+  },
+  ////////////////////////////////////////////
+  "base_keymap": "VSCode",
+  "ui_font_size": 16,
+  "buffer_font_size": 17.0,
+  ///////////////////////////////////////////
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "Ayu Mirage",
+  },
+  /////////////////////////////////////////
+  "lsp": {
+    "basedpyright": {
+      "binary": {
+        "path": "/home/longdpt/dl/bin/basedpyright-langserver",
+        "arguments": ["--stdio"]
+      }
+    },
+
+    "ruff": {
+      "binary": {
+        "path": "/home/longdpt/dl/bin/ruff",
+        "arguments": ["server"]
+        }
+      },
+      }
+    },
+  /////////////////////////////////////////////////////
+  "languages": {
+    "Python": {
+      "language_servers": ["ruff", "basedpyright"],
+      "format_on_save": "off",
+    },
+    "Rust": {
+      "format_on_save": "off",
+    },
+  },
+}
+
+
+######################
+## Keymap shortcuts ##
+######################
+
+≡ -> Gram -> Open Keymap -> task: rerun -> set as "Ctrl + R"
+
+≡ -> Gram -> Open Keymap -> repl: run -> set as "Shift + Enter"
+≡ -> Gram -> Open Keymap -> repl: restart -> set as "Ctrl + Shift + R"
+
+≡ -> Gram -> Open Keymap -> editor: show signature help -> set as "Shift + Tab"
+≡ -> Gram -> Open Keymap -> editor: backtab -> set as "Ctrl + Tab"
+
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor && jupyter",
+    "bindings": {
+      "shift-enter": "repl::RunInPlace",
+      "ctrl-shift-i": "repl::Interrupt",
+      "ctrl-shift-r": "repl::Restart",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-l": "terminal::Clear",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-enter": ["terminal::SendText", "\u001b[3;5~"],
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-r": "task::Rerun"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "shift-tab": "editor::ShowSignatureHelp"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-tab": "editor::Backtab"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-r": [
+        "task::Rerun",
+        {
+          "reevaluate_context": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "((Editor && jupyter) && !ContextEditor)",
+    "bindings": {
+      "ctrl-shift-enter": null
+    }
+  },
+  {
+    "context": "((Editor && jupyter) && !ContextEditor)",
+    "bindings": {
+      "ctrl-alt-enter": null
+    }
+  }
+]
+
+####################################
+## Register Python Jupyter kernel ##
+####################################
+
+# activate environment
+source ~/<env_name>/bin/activate.fish # for uv, can also use ``source ~/dl/bin/activate.sh``
+conda active <env_name> # for conda
+
+# Install ipykernel
+python3 -m ipykernel install --user --name=<env_name> # example: python3 -m ipykernel install --user --name=dl
+
+# create "kernel.jsonc" file for Gram editor
+cd ~.local/share/jupyter/kernels/<env_name>; ln -sf kernel.json kernel.jsonc
+cd ~/<env_name>/share/jupyter/kernels/python3; ln -sf kernel.json kernel.jsonc
+
+~ = /home/username/ (/home/longdpt/)
+
+#############################
+## gram handle busy cursor ##
+#############################
+
+grep -ril "Name=Zed" \
+  ~/.local/share/applications \
+  /usr/share/applications \
+  2>/dev/null
+ 
+=> Output: /usr/share/applications/app.liten.Gram.desktop
+ 
+# -r: Recursive. It searches all files in the target directory and continues down through all subdirectories.
+# -i: Ignore case. It makes the search case-insensitive (e.g., searching for "error" will also match "Error", "ERROR", or "ErRoR").
+# -l: Files with matches. Instead of printing every individual line that contains the text, it only outputs the file path/name of the files where a match was found.
+
+--------------------------------------------------
+
+gnome-text-editor /usr/share/applications/app.liten.Gram.desktop
+
+#------#
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gram
+GenericName=Text Editor
+Comment=A code editor for humanoid apes and grumpy toads
+TryExec=gram
+StartupNotify=false
+Exec=/usr/bin/gram %U
+Icon=app.liten.Gram
+Categories=Utility;TextEditor;Development;IDE;
+Keywords=gram;
+# To add Gram to "Open Folder With..." context menu, add `inode/directory` to the MimeType field (semicolon separated)
+# Arch linux users have reported this setting Gram as default file browser. See https://github.com/zed-industries/zed/pull/39076 and related issues.
+# If this happens to you, an unconfirmed fix may be to install Arch's `gnome-defaults-list` package.
+MimeType=text/plain;application/x-zerosize;x-scheme-handler/gram;
+Actions=NewWorkspace;
+StartupWMClass=app.liten.Gram
+
+[Desktop Action NewWorkspace]
+Exec=/usr/bin/gram --new %U
+Name=Open a new workspace
