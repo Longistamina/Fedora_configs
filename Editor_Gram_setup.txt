@@ -238,3 +238,9 @@ StartupWMClass=app.liten.Gram
 [Desktop Action NewWorkspace]
 Exec=/usr/bin/gram --new %U
 Name=Open a new workspace
+
+--------------------------------------------------------
+
+desktop-file-validate /usr/share/applications/app.liten.Gram.desktop
+
+sudo update-desktop-database /usr/share/applications
