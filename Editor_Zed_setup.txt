@@ -187,6 +187,31 @@ python3 -m ipykernel install --user --name=<env_name> # example: python3 -m ipyk
 
 ~ = /home/username/ (/home/longdpt/)
 
+#################################
+## Setup debugger (For Python) ##
+#################################
+
+# Inside your project directory
+mkdir .zed
+touch .zed/debug.json
+
+# pass these to debug.json
+[
+  {
+    "adapter": "Debugpy",
+    "label": "Python: Debug Current File",
+    "request": "launch",
+    "python": "/home/longdpt/dl/bin/python",
+    "args": [],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "program": "$ZED_FILE",
+    "subProcess": false
+  }
+]
+
+# Note: should install debugpy (pip install debugpy)
+# Most of the time, we should use ``Step Into`` and ``Step Over``
+
 ############################
 ## zed handle busy cursor ##
 ############################

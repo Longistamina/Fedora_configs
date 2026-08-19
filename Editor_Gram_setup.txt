@@ -196,6 +196,31 @@ cd ~/<env_name>/share/jupyter/kernels/python3; ln -sf kernel.json kernel.jsonc
 
 ~ = /home/username/ (/home/longdpt/)
 
+#################################
+## Setup debugger (For Python) ##
+#################################
+
+# Inside your project directory
+mkdir .gram
+touch .gram/debug.jsonc
+
+# pass these to debug.jsonc
+[
+  {
+    "adapter": "Debugpy",
+    "label": "Python: Debug Current File",
+    "request": "launch",
+    "python": "/home/longdpt/dl/bin/python", // path to the env python
+    "args": [],
+    "cwd": "$GRAM_WORKTREE_ROOT",
+    "program": "$GRAM_FILE",
+    "subProcess": false,
+  }
+]
+
+# Note: should install debugpy (pip install debugpy)
+# Most of the time, we should use ``Step Into`` and ``Step Over``
+
 #############################
 ## gram handle busy cursor ##
 #############################
