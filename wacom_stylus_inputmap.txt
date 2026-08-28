@@ -1,0 +1,75 @@
+# Map a Wacom pen button to Alt+Tab on Fedora GNOME (Wayland)
+
+GNOME Settings may fail to record `Alt+Tab` because GNOME switches windows immediately. 
+Instead, find the pen’s GNOME settings path and set the shortcut directly with `gsettings`.
+
+## 1. Find the pen profile
+
+List tablet profiles:
+
+```bash
+dconf list /org/gnome/desktop/peripherals/tablets/
+```
+
+Open **Settings → Wacom Tablet → Pen**. Temporarily set **Button 1** to **Right Click**, then run:
+
+```bash
+dconf dump /org/gnome/desktop/peripherals/
+```
+
+Find the stylus section whose `button-action` changed to `'right'`, for example:
+
+```text
+[stylus/default-0531:0103]
+button-action='right'
+```
+
+Its settings path is:
+
+```text
+/org/gnome/desktop/peripherals/stylus/default-0531:0103/
+```
+
+## 2. Identify physical buttons
+
+| GNOME label | Action key                | Shortcut key                  |
+| ----------- | ------------------------- | ----------------------------- |
+| Button 1    | `button-action`           | `button-keybinding`           |
+| Button 2    | `secondary-button-action` | `secondary-button-keybinding` |
+| Button 3    | `tertiary-button-action`  | `tertiary-button-keybinding`  |
+
+Not every pen has all three buttons.
+
+To identify the physical switches, temporarily assign one GNOME button at a time to **Right Click**. 
+Press each physical pen button over an empty desktop area. The switch that opens the context menu is the button you configured. Repeat for Button 2 or 3 if needed.
+
+## 3. Assign Alt+Tab
+
+Replace `default-0531:0103` with your stylus section name.
+
+For Button 1:
+
+```bash
+gsettings set \
+  org.gnome.desktop.peripherals.tablet.stylus:/org/gnome/desktop/peripherals/stylus/default-0531:0103/ \
+  button-action 'keybinding'
+
+gsettings set \
+  org.gnome.desktop.peripherals.tablet.stylus:/org/gnome/desktop/peripherals/stylus/default-0531:0103/ \
+  button-keybinding '<Alt>Tab'
+```
+
+For Button 2, use `secondary-button-action` and `secondary-button-keybinding`. For Button 3, use `tertiary-button-action` and `tertiary-button-keybinding`.
+
+## 4. Undo
+
+```bash
+gsettings reset \
+  org.gnome.desktop.peripherals.tablet.stylus:/org/gnome/desktop/peripherals/stylus/default-0531:0103/ \
+  button-action
+
+gsettings reset \
+  org.gnome.desktop.peripherals.tablet.stylus:/org/gnome/desktop/peripherals/stylus/default-0531:0103/ \
+  button-keybinding
+```
+
