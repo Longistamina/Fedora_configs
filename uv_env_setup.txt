@@ -13,3 +13,37 @@ uv pip marimo install ipython bpython jupyterlab termcolor regex loguru pytz num
 py3 = ~/myenv/bin/python3.13
 ipt = ~/myenv/bin/ipython
 uv-myenv-install = uv pip install --python ~/myenv/bin/python
+
+# ===================================================================================
+# Use ``uv`` to initialize a python project (example: tidypyrs)
+# ===================================================================================
+
+mkdir tidypyrs
+cd tidypyrs
+
+uv init --lib --python 3.13 . # Because this is a distributable library, use ``uv init --lib``, not ordinary ``uv init``
+uv add polars # add polars as dependency (can add many others)
+uv add --dev pytest pytest-cov ruff pyright
+
+mkdir tests # add tests directory
+
+uv run python -c "import tidypyrs; print(tidypyrs)"
+uv run pytest
+uv run ruff check .
+uv run pyright
+uv build
+
+# Useful additions to pyproject.toml:
+```
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.pyright]
+include = ["src", "tests"]
+pythonVersion = "3.11"
+```

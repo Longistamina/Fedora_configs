@@ -225,7 +225,7 @@ touch .gram/debug.jsonc
 ## gram handle busy cursor ##
 #############################
 
-grep -ril "Name=Zed" \
+grep -ril "Name=Gram" \
   ~/.local/share/applications \
   /usr/share/applications \
   2>/dev/null
